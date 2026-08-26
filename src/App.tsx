@@ -5,12 +5,14 @@ import FormControls from "./components/FormControls";
 
 function App() {
   return (
-    <>
-      <GeneralInfo />
-      <Education />
-      <Experience />
-      <FormControls />
-    </>
+    <div className="container py-5">
+      <form>
+        <GeneralInfo />
+        <Education />
+        <Experience />
+        <FormControls />
+      </form>
+    </div>
   );
 }
 
