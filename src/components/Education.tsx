@@ -67,12 +67,20 @@ export default function Education({ isEditing, formatDate }) {
       ) : (
         <div className="card-body">
           <h2 className="card-title h5 mb-3">Education</h2>
-          <p className="schoolName">School Name: {schoolName}</p>
-          <p className="studyTitle">Title of Study: {studyTitle}</p>
-          <p className="studyStart">
-            Study Start Date: {formatDate(studyStart)}
-          </p>
-          <p className="studyEnd">Study End Date: {formatDate(studyEnd)}</p>
+          {schoolName !== "" && (
+            <p className="schoolName">School Name: {schoolName}</p>
+          )}
+          {studyTitle !== "" && (
+            <p className="studyTitle">Title of Study: {studyTitle}</p>
+          )}
+          {studyStart !== "" && (
+            <p className="studyStart">
+              Study Start Date: {formatDate(studyStart)}
+            </p>
+          )}
+          {studyEnd !== "" && (
+            <p className="studyEnd">Study End Date: {formatDate(studyEnd)}</p>
+          )}
         </div>
       )}
     </section>

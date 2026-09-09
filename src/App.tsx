@@ -12,10 +12,11 @@ function formatDate(date: string) {
 
 function App() {
   const [isEditing, setIsEditing] = useState(true);
+  const [isGeneralInfoValid, setIsGeneralInfoValid] = useState(false);
   return (
     <div className="container py-5">
       <form>
-        <GeneralInfo isEditing={isEditing} />
+        <GeneralInfo isEditing={isEditing} isValid={isGeneralInfoValid} />
         <Education isEditing={isEditing} formatDate={formatDate} />
         <Experience isEditing={isEditing} formatDate={formatDate} />
         <FormControls onClick={setIsEditing} />

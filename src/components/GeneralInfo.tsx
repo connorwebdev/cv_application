@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function GeneralInfo({ isEditing }) {
+export default function GeneralInfo({ isEditing, isValid }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -54,9 +54,9 @@ export default function GeneralInfo({ isEditing }) {
       ) : (
         <div className="card-body">
           <h2 className="card-title h5 mb-3">General Information</h2>
-          <p className="name">Name: {name}</p>
-          <p className="email">Email: {email}</p>
-          <p className="phone">Phone: {phone}</p>
+          {name !== "" && <p className="name">Name: {name}</p>}
+          {email !== "" && <p className="email">Email: {email}</p>}
+          {phone !== "" && <p className="phone">Phone: {phone}</p>}
         </div>
       )}
     </section>

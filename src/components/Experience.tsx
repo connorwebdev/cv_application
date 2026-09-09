@@ -81,13 +81,23 @@ export default function Experience({ isEditing, formatDate }) {
       ) : (
         <div className="card-body">
           <h2 className="card-title h5 mb-3">Experience</h2>
-          <p className="companyName">Company Name: {companyName}</p>
-          <p className="positionTitle">Position Title: {positionTitle}</p>
-          <p className="responsibilities">
-            Responsibilities: {responsibilities}
-          </p>
-          <p className="workStart">Work Start Date: {formatDate(workStart)}</p>
-          <p className="workEnd">Work End Date: {formatDate(workEnd)}</p>
+          {companyName !== "" && (
+            <p className="companyName">Company Name: {companyName}</p>
+          )}
+          {positionTitle !== "" && (
+            <p className="positionTitle">Position Title: {positionTitle}</p>
+          )}
+          {responsibilities !== "" && (
+            <p className="responsibilities">
+              Responsibilities: {responsibilities}
+            </p>
+          )}
+          {workStart !== "" && (
+            <p className="workStart">Work Start Date: {formatDate(workStart)}</p>
+          )}
+          {workEnd !== "" && (
+            <p className="workEnd">Work End Date: {formatDate(workEnd)}</p>
+          )}
         </div>
       )}
     </section>
