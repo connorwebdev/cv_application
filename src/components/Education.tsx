@@ -1,19 +1,23 @@
 import { useState } from "react";
 
-export default function Education({ isEditing, formatDate }) {
+export default function Education({ isEditing, formatDate, isEducationValid }) {
   const [schoolName, setSchoolName] = useState("");
   const [studyTitle, setStudyTitle] = useState("");
   const [studyStart, setStudyStart] = useState("");
   const [studyEnd, setStudyEnd] = useState("");
 
+  //  Check required fields
+  const isValid = schoolName.trim() !== "";
+  isEducationValid(isValid);
+
   return (
     <section className="card mb-4">
       {isEditing ? (
         <div className="card-body">
-          <h2 className="card-title h5 mb-3">Education</h2>
+          <h2 className="card-title h4">Education</h2>
           <div className="mb-3">
             <label htmlFor="school_name" className="form-label">
-              School Name:
+              School Name: <span className="required">*</span>
             </label>
             <input
               type="text"
@@ -66,7 +70,7 @@ export default function Education({ isEditing, formatDate }) {
         </div>
       ) : (
         <div className="card-body">
-          <h2 className="card-title h5 mb-3">Education</h2>
+          <h2 className="card-title h4">Education</h2>
           {schoolName !== "" && (
             <p className="schoolName">School Name: {schoolName}</p>
           )}

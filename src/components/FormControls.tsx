@@ -1,7 +1,20 @@
-export default function FormControls({ onClick }) {
+export default function FormControls({
+  isEditing,
+  isGeneralInfoValid,
+  isEducationValid,
+  isExperienceValid,
+}) {
   function handleClick(e) {
     e.preventDefault();
-    e.currentTarget.textContent === "Submit" ? onClick(false) : onClick(true);
+    if (e.currentTarget.textContent === "Submit") {
+      if (isGeneralInfoValid && isEducationValid && isExperienceValid) {
+        isEditing(false);
+      } else {
+        alert("Please complete all required fields before submitting.");
+      }
+    } else {
+      isEditing(true);
+    }
   }
 
   return (

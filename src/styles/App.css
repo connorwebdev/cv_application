@@ -1,0 +1,11 @@
+.required {
+  color: #a41616;
+}
+.card {
+  background-color: #eef4ff;
+  border-width: 3px;
+  padding: 25px;
+  h2 {
+    margin-bottom: 40px;
+  }
+}

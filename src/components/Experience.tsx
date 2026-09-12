@@ -1,20 +1,32 @@
 import { useState } from "react";
 
-export default function Experience({ isEditing, formatDate }) {
+export default function Experience({
+  isEditing,
+  formatDate,
+  isExperienceValid,
+}) {
   const [companyName, setCompanyName] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
   const [responsibilities, setResponsibilities] = useState("");
   const [workStart, setWorkStart] = useState("");
   const [workEnd, setWorkEnd] = useState("");
 
+  //  Check required fields
+  const isValid =
+    companyName.trim() !== "" &&
+    positionTitle.trim() !== "" &&
+    workStart.trim() !== "" &&
+    workEnd.trim() !== "";
+  isExperienceValid(isValid);
+
   return (
     <section className="card mb-4">
       {isEditing ? (
         <div className="card-body">
-          <h2 className="card-title h5 mb-3">Experience</h2>
+          <h2 className="card-title h4">Experience</h2>
           <div className="mb-3">
             <label htmlFor="company_name" className="form-label">
-              Company Name:
+              Company Name: <span className="required">*</span>
             </label>
             <input
               type="text"
@@ -27,7 +39,7 @@ export default function Experience({ isEditing, formatDate }) {
           </div>
           <div className="mb-3">
             <label htmlFor="position_title" className="form-label">
-              Position Title:
+              Position Title: <span className="required">*</span>
             </label>
             <input
               type="text"
@@ -53,7 +65,7 @@ export default function Experience({ isEditing, formatDate }) {
           </div>
           <div className="mb-3">
             <label htmlFor="work_start" className="form-label">
-              Work Start Date:
+              Work Start Date: <span className="required">*</span>
             </label>
             <input
               type="date"
@@ -66,7 +78,7 @@ export default function Experience({ isEditing, formatDate }) {
           </div>
           <div className="mb-3">
             <label htmlFor="work_end" className="form-label">
-              Work End Date:
+              Work End Date: <span className="required">*</span>
             </label>
             <input
               type="date"
@@ -80,7 +92,7 @@ export default function Experience({ isEditing, formatDate }) {
         </div>
       ) : (
         <div className="card-body">
-          <h2 className="card-title h5 mb-3">Experience</h2>
+          <h2 className="card-title h4">Experience</h2>
           {companyName !== "" && (
             <p className="companyName">Company Name: {companyName}</p>
           )}
@@ -93,7 +105,9 @@ export default function Experience({ isEditing, formatDate }) {
             </p>
           )}
           {workStart !== "" && (
-            <p className="workStart">Work Start Date: {formatDate(workStart)}</p>
+            <p className="workStart">
+              Work Start Date: {formatDate(workStart)}
+            </p>
           )}
           {workEnd !== "" && (
             <p className="workEnd">Work End Date: {formatDate(workEnd)}</p>
