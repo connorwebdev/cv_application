@@ -4,6 +4,7 @@ export default function GeneralInfo({ isEditing, isGeneralInfoValid }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [emailError, setEmailError] = useState(false);
 
   //  Check required fields
   const isValid = name.trim() !== "" && email.trim() !== "";
@@ -46,10 +47,18 @@ export default function GeneralInfo({ isEditing, isGeneralInfoValid }) {
             <label htmlFor="email" className="form-label">
               Email: <span className="required">*</span>
             </label>
+            {emailError && (
+              <div className="alert alert-danger" role="alert">
+                <p>Please enter a valid email address</p>
+              </div>
+            )}
             <input
               type="email"
               value={email}
               onChange={(e) => setInput(e)}
+              onBlur={(e) => {
+                setEmailError(!e.target.validity.valid);
+              }}
               name="email"
               id="email"
               className="form-control"

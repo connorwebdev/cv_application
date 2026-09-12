@@ -16,10 +16,17 @@ function App() {
   const [isGeneralInfoValid, setIsGeneralInfoValid] = useState(false);
   const [isEducationValid, setIsEducationValid] = useState(false);
   const [isExperienceValid, setIsExperienceValid] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   return (
     <div className="container py-5">
+      <h1 className="mb-5">CV Application Form</h1>
       <form>
+        {formError && (
+          <div className="alert alert-danger" role="alert">
+            Please complete all required fields marked with *
+          </div>
+        )}
         <GeneralInfo
           isEditing={isEditing}
           isGeneralInfoValid={setIsGeneralInfoValid}
@@ -34,8 +41,15 @@ function App() {
           formatDate={formatDate}
           isExperienceValid={setIsExperienceValid}
         />
+        {formError && (
+          <div className="alert alert-danger" role="alert">
+            Please complete all required fields marked with *
+          </div>
+        )}
         <FormControls
-          isEditing={setIsEditing}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          formError={setFormError}
           isGeneralInfoValid={isGeneralInfoValid}
           isEducationValid={isEducationValid}
           isExperienceValid={isExperienceValid}

@@ -1,28 +1,41 @@
 export default function FormControls({
   isEditing,
+  setIsEditing,
   isGeneralInfoValid,
   isEducationValid,
   isExperienceValid,
+  formError,
 }) {
   function handleClick(e) {
     e.preventDefault();
     if (e.currentTarget.textContent === "Submit") {
       if (isGeneralInfoValid && isEducationValid && isExperienceValid) {
-        isEditing(false);
+        setIsEditing(false);
+        formError(false);
       } else {
-        alert("Please complete all required fields before submitting.");
+        formError(true);
       }
     } else {
-      isEditing(true);
+      setIsEditing(true);
     }
   }
-
+  console.log(typeof isEditing);
   return (
     <section className="controls d-flex justify-content-end gap-2">
-      <button type="button" onClick={handleClick} className="btn btn-secondary">
+      <button
+        disabled={isEditing}
+        type="button"
+        onClick={handleClick}
+        className="btn btn-secondary"
+      >
         Edit
       </button>
-      <button type="submit" onClick={handleClick} className="btn btn-primary">
+      <button
+        disabled={!isEditing}
+        type="submit"
+        onClick={handleClick}
+        className="btn btn-primary"
+      >
         Submit
       </button>
     </section>
