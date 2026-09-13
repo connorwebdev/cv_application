@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-export default function GeneralInfo({ isEditing, isGeneralInfoValid }) {
+interface GeneralInfoProps {
+  isEditing: boolean;
+  setGeneralInfoValid: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function GeneralInfo({
+  isEditing,
+  setGeneralInfoValid,
+}: GeneralInfoProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -8,9 +16,9 @@ export default function GeneralInfo({ isEditing, isGeneralInfoValid }) {
 
   //  Check required fields
   const isValid = name.trim() !== "" && email.trim() !== "";
-  isGeneralInfoValid(isValid);
+  setGeneralInfoValid(isValid);
 
-  function setInput(e) {
+  function setInput(e: React.ChangeEvent<HTMLInputElement>): void {
     switch (e.target.id) {
       case "name":
         setName(e.target.value);

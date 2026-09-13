@@ -29,17 +29,17 @@ function App() {
         )}
         <GeneralInfo
           isEditing={isEditing}
-          isGeneralInfoValid={setIsGeneralInfoValid}
+          setGeneralInfoValid={setIsGeneralInfoValid}
         />
         <Education
           isEditing={isEditing}
           formatDate={formatDate}
-          isEducationValid={setIsEducationValid}
+          setIsEducationValid={setIsEducationValid}
         />
         <Experience
           isEditing={isEditing}
           formatDate={formatDate}
-          isExperienceValid={setIsExperienceValid}
+          setIsExperienceValid={setIsExperienceValid}
         />
         {formError && (
           <div className="alert alert-danger" role="alert">

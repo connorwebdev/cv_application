@@ -1,6 +1,16 @@
 import { useState } from "react";
 
-export default function Education({ isEditing, formatDate, isEducationValid }) {
+interface EducationProps {
+  isEditing: boolean;
+  formatDate: (date: string) => string;
+  setIsEducationValid: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Education({
+  isEditing,
+  formatDate,
+  setIsEducationValid,
+}: EducationProps) {
   const [schoolName, setSchoolName] = useState("");
   const [studyTitle, setStudyTitle] = useState("");
   const [studyStart, setStudyStart] = useState("");
@@ -8,7 +18,7 @@ export default function Education({ isEditing, formatDate, isEducationValid }) {
 
   //  Check required fields
   const isValid = schoolName.trim() !== "";
-  isEducationValid(isValid);
+  setIsEducationValid(isValid);
 
   return (
     <section className="card mb-4">

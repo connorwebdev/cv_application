@@ -1,3 +1,12 @@
+interface FormControlProps {
+  isEditing: boolean;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  isGeneralInfoValid: boolean;
+  isEducationValid: boolean;
+  isExperienceValid: boolean;
+  formError: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function FormControls({
   isEditing,
   setIsEditing,
@@ -5,8 +14,8 @@ export default function FormControls({
   isEducationValid,
   isExperienceValid,
   formError,
-}) {
-  function handleClick(e) {
+}: FormControlProps) {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
     if (e.currentTarget.textContent === "Submit") {
       if (isGeneralInfoValid && isEducationValid && isExperienceValid) {
@@ -19,7 +28,6 @@ export default function FormControls({
       setIsEditing(true);
     }
   }
-  console.log(typeof isEditing);
   return (
     <section className="controls d-flex justify-content-end gap-2">
       <button

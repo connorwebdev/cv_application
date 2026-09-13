@@ -1,10 +1,16 @@
 import { useState } from "react";
 
+interface ExperienceProps {
+  isEditing: boolean;
+  formatDate: (date: string) => string;
+  setIsExperienceValid: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function Experience({
   isEditing,
   formatDate,
-  isExperienceValid,
-}) {
+  setIsExperienceValid,
+}: ExperienceProps) {
   const [companyName, setCompanyName] = useState("");
   const [positionTitle, setPositionTitle] = useState("");
   const [responsibilities, setResponsibilities] = useState("");
@@ -17,7 +23,7 @@ export default function Experience({
     positionTitle.trim() !== "" &&
     workStart.trim() !== "" &&
     workEnd.trim() !== "";
-  isExperienceValid(isValid);
+  setIsExperienceValid(isValid);
 
   return (
     <section className="card mb-4">
