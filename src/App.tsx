@@ -19,7 +19,7 @@ function App() {
   const [formError, setFormError] = useState(false);
 
   return (
-    <div className="container py-5">
+    <div className="container py-5 app-wrap">
       <h1 className="mb-5">CV Application Form</h1>
       <form>
         {formError && (
